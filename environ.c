@@ -16,7 +16,6 @@ int _myenv(info_t *info)
  * _getenv - gets the value of an environ variable
  * @info: Structure containing potential arguments. Used to maintain
  * @name: env var name
- *
  * Return: the value
  */
 char *_getenv(info_t *info, const char *name)
@@ -39,7 +38,7 @@ char *_getenv(info_t *info, const char *name)
  *             or modify an existing one
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
- *  Return: Always 0
+ * Return: Always 0
  */
 int _mysetenv(info_t *info)
 {
@@ -57,7 +56,7 @@ int _mysetenv(info_t *info)
  * _myunsetenv - Remove an environment variable
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
- *  Return: Always 0
+ * Return: Always 0
  */
 int _myunsetenv(info_t *info)
 {
