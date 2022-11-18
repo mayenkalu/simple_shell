@@ -1,0 +1,90 @@
+.TH simple_shell 1 "17 Nov 2022" "1.00" "simple_shell General Commands Manual"
+.SH NAME
+.B simple_shell
+- UNIX command line interpreter.
+
+.SH SYNOPSIS
+.B ./hsh
+- [option_name] [command_file]
+
+.SH DESCRIPTION
+
+.B Simple shell
+it is a simple version of a command line interpreter for the system. The simple shell read lines from either the terminal, interpretes them, and generally executes other commands. It incorporates mode interactive and non-interactive, the commands can be executed while the program is running or can be executing a command within a file directly by the shell.
+
+.SS INVOCATION
+
+To start the interactive mode the program will be executed, then starts the mode indicated by '$', to exit of the mode type 'exit' or type 'ctrl + d' and in the mode non-interactive the location that contains the command to be executed must be specified in the command line.
+
+.SS EXECUTION
+
+The program takes the arguments of the command line in a string and it is tokenizes into words using "space" as a delimiter, the first word is consider the command and all remaining are considered the arguments to that command. If the command is valid:
+
+1. If the first argument is different to '.', '/' or shell builtin, the program searches in the PATH and then invocates it.
+2. If the first character is '.' or '/', the program executes that typed command with the passed argument.
+
+.SH SEE ALSO
+
+psh(1), environ(7), ksh(1), test(1)
+
+.SS Command Exit status 
+
+The Exit command status could vary depending of the typed command and his behavior, in the caso of a builtin command return exit codes, as does an executed shell function.
+
+.SS EXIT STATUS
+
+Errors that are detected by the shell, such a syntax error, will cause an exit specifying that file or directory does not exist. If a type a command with a syntax error, the output specifies 'No such file or directory'. 
+
+.SH BUGS
+
+No known bugs.
+
+.SH EXAMPLES
+.sp
+.B Execution of command: $ ls -l
+.sp
+$ ls -l
+.nf
+total 64
+drwxrwxr-x 3 juan juan  4096 Aug 19 22:54 .
+drwxrwxr-x 3 juan juan  4096 Aug 19 22:34 ..
+drwxrwxr-x 8 juan juan  4096 Aug 19 22:34 .git
+-rw-rw-r-- 1 juan juan   165 Aug 19 22:34 AUTHORS
+-rw-rw-r-- 1 juan juan  2390 Aug 19 22:34 README.md
+-rw-rw-r-- 1 juan juan  1485 Aug 19 22:34 functions.h
+-rwxrwxr-x 1 juan juan 14000 Aug 19 22:54 hsh
+-rw-rw-r-- 1 juan juan   513 Aug 19 22:34 hsh.c
+-rwxrwxr-x 1 juan juan  2004 Aug 19 22:34 man_1_simple_shell
+-rw-rw-r-- 1 juan juan  1935 Aug 19 22:34 ops_linked_list.c
+-rw-rw-r-- 1 juan juan  1634 Aug 19 22:34 ops_strings.c
+-rw-rw-r-- 1 juan juan  3133 Aug 19 22:34 tools.c
+
+.B Execution of "env" variable:
+$ env
+.nf
+XDG_VTNR=7
+LC_PAPER=es_CO.UTF-8
+LC_ADDRESS=es_CO.UTF-8
+XDG_SESSION_ID=c2
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/juan
+LC_MONETARY=es_CO.UTF-8
+CLUTTER_IM_MODULE=xim
+GPG_AGENT_INFO=/home/juan/.gnupg/S.gpg-agent:0:1
+TERM=xterm-256color
+VTE_VERSION=4205
+SHELL=/bin/bash
+QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+WINDOWID=100752850
+LC_NUMERIC=es_CO.UTF-8
+UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/1000/1425
+GNOME_KEYRING_CONTROL=
+GTK_MODULES=gail:atk-bridge:unity-gtk-module
+USER=juan
+...
+.sp
+.B Prints all the environment variables of the system. 
+.SH AUTHORS
+
+.B Written by Mayen Kalu and Chesachi Victor Kalu
+
+.B ALX Africa - Cohort 9
